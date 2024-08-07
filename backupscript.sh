@@ -10,14 +10,14 @@ current_time=$(date "+%d_%m_%Y_%H_%M_%S")
 if [ ! "$1" ] || [ -z "$1" ]; then
 	echo "Error... please input the file you want to back up"
 	exit 1	
-elif [ ! -f "$1" ]; then
+elif [ ! -e "$1" ]; then
 	echo "Error... File not found"
 	exit 1
 fi
 
 mkdir -p backup
 
-if [ -f "backup/$1_$today" ]; then
+if [ -e "backup/$1_$today" ]; then
 	echo "creating duplicate backup file - $1_$current_time"
 	cp -R $1 backup/$1_$current_time
 else
